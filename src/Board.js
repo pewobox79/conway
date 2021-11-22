@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import Cell from "./Cell";
+import Button from "./Button";
 
 export default function Board() {
 
@@ -25,18 +26,17 @@ export default function Board() {
         cell.push(x)
     }
 console.log(cell)
+    let itemId
     const cellItems = cell.map((item) => {
-
+        itemId = item
      return (
-         <Cell key={cell.id} id={item} width={cellValue + "px"} height={cellValue + "px"}
+         <Cell key={cell.id} id={itemId} width={cellValue + "px"} height={cellValue + "px"}
                state={cellState}
                setState={setCellState} color={cellColor} setColor={setCellColor}/>)
 
+
     })
 
-function clearBoard(e){
-        setCellState(false)
-}
 
     return (
         <><div style={{
@@ -47,7 +47,7 @@ function clearBoard(e){
         }}>
             {cellItems}
         </div>
-
+            <Button cells={cell}>find</Button>
             </>
     )
 }
